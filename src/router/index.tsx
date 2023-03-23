@@ -24,6 +24,7 @@ const Home: React.FC | any = React.lazy(() => import('../pages/home'))
 
 // 测试
 const ReactTest = React.lazy(() => import('../pages/test'))
+const ReactUiTest = React.lazy(() => import('../pages/test/ui'))
 
 // 实现懒加载的用Suspense包裹 定义函数
 const lazyLoad = (children: React.ReactNode): React.ReactNode => {
@@ -66,9 +67,15 @@ const routes: IRoute[] = [
         children: [
           {
             path: '/test',
-            title: 'React测试',
+            title: '逻辑测试',
             meau: true,
             component: lazyLoad(<ReactTest />),
+          },
+          {
+            path: '/test/ui',
+            title: 'UI测试',
+            meau: true,
+            component: lazyLoad(<ReactUiTest />),
           },
         ],
       },

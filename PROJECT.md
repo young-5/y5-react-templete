@@ -5,7 +5,7 @@
 1. 本项目基于 creact-react-app 进行搭建
 1. 基于 react18x react-router-dom6x 开发
 1. 基于 classnames less 进行样式编写
-1. craco 进行项目配置
+1. craco 进行项目配置 (creact-reaact-app 可使用 eject 进行 webpack 配置的暴露)
 1. eslint prettier 代码校验
 1. stylelint 样式校验
 1. husky lint-staged git commit 校验
@@ -55,7 +55,11 @@
 - try catch 监听
 - reject .then().catch().finally() 监听
 - 非空校验 ?.
--
+
+4. 日期处理
+
+   - dayjs 更小，Day.js 是代替修改本地 Date.prototype，Day.js 对 Date 对象进行了封装，只需要调用 Dayjs()即可。
+   - momentjs
 
 ### 基础方法封装
 
@@ -134,11 +138,14 @@
 
 5. 主题
 
-    1. 
-        - scss 通过 mixins 混入 实现
-        - body 设置 data-theme 全局样式属性
-        - 通过 mixins 混入器 实现 $theme-name 主题样式类名， $theme-map 样式
-    2. 
+   1. - scss 通过 mixins 混入 实现
+      - body 设置 data-theme 全局样式属性
+      - 通过 mixins 混入器 实现 $theme-name 主题样式类名， $theme-map 样式
+   2. css-in-js 开发 antd 默认 ConfigProvider.theme 支持主题切换
+
+      支持动态切换主题；
+      支持同时存在多个主题；
+      支持针对某个/某些组件修改主题变量；
 
 6. 路由权限动态配置（json）
 

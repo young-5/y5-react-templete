@@ -4,3 +4,6 @@ declare module '*.module.less' {
 }
 declare module '*.less'
 declare module 'classnames'
+declare module 'dayjs'
+declare module '*.png'
+declare module '*.jpg'
