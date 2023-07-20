@@ -48,7 +48,7 @@ const Routers = (props: any) => {
   const sysConfig = store.sys_config || {}
   const goInitApi = () => {
     if (localStorage.getItem('token') && !user.userId) {
-      user.query({})
+      user?.query({})
       sysConfig.querySysFileds()
     }
   }

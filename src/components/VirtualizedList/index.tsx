@@ -15,20 +15,28 @@ const VirtualizedList: React.FC<VirtualizedListProps> = (props) => {
   useEffect(() => {
     handleScroll()
   }, [])
+  useEffect(() => {
+    setCurListData(list.slice(0, 10))
+  }, [list])
 
   const [curListData, setCurListData] = useState([])
-  const [endIndex, setEndIndex] = useState(15) //初始数据
+  const [endIndex, setEndIndex] = useState(0) //初始数据
   const [noMore, setNoMore] = useState(false)
   const handleScroll = () => {
-    const scrollHeight = scrollRef.current.clientHeight
-    const clientHeight = clientRef.current.clientHeight
-    const scrollTop = clientRef.current.scrollTop
-    if (!noMore && scrollHeight - scrollTop <= clientHeight) {
+    const scrollclientHeight = scrollRef.current.clientHeight
+    const scrollHeight = scrollRef.current.scrollHeight
+    const clientHeight = clientRef.current.clientHeight // 可是区域的高度
+    const scrollTop = clientRef.current.scrollTop // “元素中的内容”超出“元素上边界”的那部分的高度。
+    const visibleCount = Math.ceil((scrollTop + clientHeight) / 50)
+    // const start = Math.floor(scrollTop / this.itemHeight)
+    if (!noMore && visibleCount >= endIndex) {
       const end = endIndex + viewCount
       if (end > list.length) {
         setNoMore(true)
       }
       setEndIndex(end)
+      const start = end - clientHeight / 50
+      console.log('start', start)
       setCurListData(list.slice(0, end))
     }
   }

@@ -1,8 +1,12 @@
 import * as React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
+import cs from './index.module.less'
 const UserLayout: React.FC = () => (
-  <div>
-    <header>登录布局框架</header>
+  <div className={cs.userlayout_root}>
+    <div className={cs.userlayout_header}>
+      <div> 登录布局</div>
+      <Link to={'/home'}> 去首页</Link>
+    </div>
     <div style={{ padding: '0 24px 24px' }}>
       <Outlet />
     </div>

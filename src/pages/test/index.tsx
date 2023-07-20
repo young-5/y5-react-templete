@@ -7,7 +7,7 @@ const Test: React.FC = () => {
   const getData = () => {
     fetch
       .fetch({
-        url: '/api/v1/string',
+        url: '/api/v1/access',
         method: 'get',
         params: {
           addPendingPool: {},

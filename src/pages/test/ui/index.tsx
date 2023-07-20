@@ -4,6 +4,7 @@ import { Tabs } from 'antd'
 import cs from './index.module.less'
 import { CustomScroll, Table, VirtualizedList } from '@/components'
 import ImgTs from './ImgTs'
+import CssCP from './CssCP'
 import cl from 'classnames'
 const { TabPane } = Tabs
 const Test: React.FC = () => {
@@ -80,6 +81,10 @@ const Test: React.FC = () => {
 
         <TabPane tab={'图片相关组件'} key={'7'}>
           <ImgTs />
+        </TabPane>
+
+        <TabPane tab={'css 知识实践'} key={'8'}>
+          <CssCP />
         </TabPane>
       </Tabs>
     </div>

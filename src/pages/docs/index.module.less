@@ -1,0 +1,53 @@
+.docs_root {
+  min-height: 500px;
+  width: 100%;
+  padding: 50px;
+  .docs_title {
+    display: flex;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    & > div {
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+  }
+  .docs_goback {
+    color: blue;
+    cursor: pointer;
+  }
+  .docs_route {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .docs_route_title {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+    .route_card {
+      margin-top: 10px;
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid #eee;
+      text-align: left;
+      padding: 10px;
+      &:hover {
+        cursor: pointer;
+        background-color: #eee;
+        .item_name {
+          color: aqua;
+        }
+      }
+      .item_name {
+        margin-top: 4px;
+      }
+      .item_card {
+        padding: 5px;
+        div {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}

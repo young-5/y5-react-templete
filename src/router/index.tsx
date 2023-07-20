@@ -21,7 +21,7 @@ const Login = React.lazy(() => import('../pages/user/login'))
 
 // 后台菜单
 const Home: React.FC | any = React.lazy(() => import('../pages/home'))
-
+const Docs = React.lazy(() => import('../pages/docs'))
 // 测试
 const ReactTest = React.lazy(() => import('../pages/test'))
 const ReactUiTest = React.lazy(() => import('../pages/test/ui'))
@@ -56,6 +56,13 @@ const routes: IRoute[] = [
         component: lazyLoad(<Home />),
         title: '首页',
         meau: true,
+        icon: 'LaptopOutlined',
+      },
+      {
+        path: '/docs',
+        component: lazyLoad(<Docs />),
+        title: '文档',
+        meau: false,
         icon: 'LaptopOutlined',
       },
       {

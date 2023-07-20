@@ -11,6 +11,7 @@
 1. husky lint-staged git commit 校验
 1. 基于 antd 进行 ui 开发
 1. 基于 axios 进行网络请求
+1. 基于 redux 进行状态管理
 
 ## 项目结构规范
 
