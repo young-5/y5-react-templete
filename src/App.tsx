@@ -15,7 +15,7 @@ function App() {
     token: { colorPrimary: '#00b96b' },
   })
   return (
-    <Watermark content='Young5百宝箱'>
+    <Watermark content='y5-react-templete'>
       <themeContext.Provider value={{ theme, setTheme }}>
         <ConfigProvider
           theme={{

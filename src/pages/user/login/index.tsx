@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       .then((res) => {
         dispatch(
           changeUserInfo({
-            name: '杨文武',
+            name: 'y5-react',
             id: '4567345',
           }),
         )
@@ -57,30 +57,19 @@ const Home: React.FC = () => {
           <Form.Item
             label='用户名'
             name='username'
-            rules={[
-              { required: true, message: 'Please input your username!' },
-            ]}>
-            <Input />
+            rules={[{ required: true, message: '随便输入!' }]}>
+            <Input placeholder='随便输入' />
           </Form.Item>
 
           <Form.Item
             label='密码'
             name='password'
-            rules={[
-              { required: true, message: 'Please input your password!' },
-            ]}>
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            name='remember'
-            valuePropName='checked'
-            wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox>记住密码</Checkbox>
+            rules={[{ required: true, message: '随便输入!' }]}>
+            <Input.Password placeholder='随便输入' />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type='primary' htmlType='submit'>
+            <Button type='primary' htmlType='submit' style={{ width: '290px' }}>
               登录
             </Button>
           </Form.Item>

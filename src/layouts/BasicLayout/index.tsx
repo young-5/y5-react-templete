@@ -36,10 +36,6 @@ const items: MenuProps['items'] = [
         key: '/test/ui',
         label: 'UI测试',
       },
-      {
-        key: '/lowCode',
-        label: '低代码平台',
-      },
     ],
   },
   {
@@ -108,7 +104,6 @@ const BasicLayout: React.FC = () => {
     !searchText ? THEME_TYPE : THEME_TYPE
   // : THEME_TYPE?.filter((v) => v.value.includes(searchText))
   return (
-    // <Watermark content='Young5百宝箱'>
     <CustomScroll id='baseCustomScroll'>
       <div className={cs.basic_layout} id='cp'>
         <Affix offsetTop={2}>
@@ -118,26 +113,12 @@ const BasicLayout: React.FC = () => {
               onClick={() => {
                 navigate('/home')
               }}>
-              Young5百宝箱
+              y5-react-templete
             </div>
             <div>
               <SearchInput />
             </div>
             <div className={cs.do_btn}>
-              <div
-                className={cs.route}
-                onClick={() => {
-                  navigate('/lowCode')
-                }}>
-                低代码平台
-              </div>
-              <div
-                className={cs.route}
-                onClick={() => {
-                  navigate('/searchDocs')
-                }}>
-                文档检索库
-              </div>
               <Dropdown
                 menu={{ items, onClick, forceSubMenuRender: true }}
                 // trigger={['click']}
@@ -192,7 +173,6 @@ const BasicLayout: React.FC = () => {
         </div>
       </div>
     </CustomScroll>
-    // </Watermark>
   )
 }
 

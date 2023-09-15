@@ -44,10 +44,7 @@ const SearchInput: React.FC<SearchInput> = (props) => {
   }
   const goSearch = (value: string) => {
     if (value) {
-      navigate('/searchDocs', {
-        state: { value: value },
-        replace: true,
-      })
+      message.info('开发中')
     } else {
       message.info('请输入关键词查询')
     }

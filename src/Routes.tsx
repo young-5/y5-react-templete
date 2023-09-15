@@ -7,8 +7,6 @@ import {
 } from 'react-router-dom'
 import routesConfig from './router'
 import AuthRouter from './router/AuthRouter'
-import Home from '@/pages/home'
-import Docs from '@/pages/docs'
 // import { useStore } from '@/models'
 // import { observer } from 'mobx-react-lite'
 import { Loading } from '@/components'
@@ -59,15 +57,15 @@ const Routers = (props: any) => {
   }, [user])
   return (
     <Router
-      basename={
-        (window as any).__POWERED_BY_QIANKUN__ ? '/react-templete' : ''
-      }>
+    // basename={
+    //   (window as any).__POWERED_BY_QIANKUN__ ? '/react-templete' : ''
+    // }
+    >
       <React.Suspense fallback={<Loading />}>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/docs' element={<Docs />} />
+          {/* <Route path='/' element={<Home />} />
           {/* <Route path='/home' element={<div>子应用</div>} /> */}
-          {/* {renderRoutes(routesConfig, user?.UserInfo?.menu, props)} */}
+          {renderRoutes(routesConfig, user?.UserInfo?.menu, props)}
           {/* <Route path='/api/v1/download' element={<div>下载</div>} />
           <Route path='/404' element={<Page404 />} />
           <Route path='*' element={<Page404 />} /> */}
