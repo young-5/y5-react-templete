@@ -2,11 +2,20 @@ import * as React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import fetch from '@/apis/request'
+import { changeUserInfo } from '@/store/module/user'
+import { useDispatch, useSelector } from 'react-redux'
+import actions from '@/micros/actions'
 import cs from './index.module.less'
 const Home: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const onFinish = (values: any) => {
     console.log('Success:', values)
+    actions.setGlobalState({
+      userInfo: {
+        name: '小五',
+      },
+    })
     fetch
       .fetch({
         url: '/api/v1/users/login',
@@ -17,6 +26,12 @@ const Home: React.FC = () => {
         },
       })
       .then((res) => {
+        dispatch(
+          changeUserInfo({
+            name: '杨文武',
+            id: '4567345',
+          }),
+        )
         goConter()
       })
   }

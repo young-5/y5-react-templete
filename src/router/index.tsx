@@ -22,9 +22,14 @@ const Login = React.lazy(() => import('../pages/user/login'))
 // 后台菜单
 const Home: React.FC | any = React.lazy(() => import('../pages/home'))
 const Docs = React.lazy(() => import('../pages/docs'))
+const SearchDocs = React.lazy(() => import('../pages/searchDocs'))
 // 测试
 const ReactTest = React.lazy(() => import('../pages/test'))
 const ReactUiTest = React.lazy(() => import('../pages/test/ui'))
+
+// 低代码
+
+const ReactLowCode = React.lazy(() => import('../pages/lowCode'))
 
 // 实现懒加载的用Suspense包裹 定义函数
 const lazyLoad = (children: React.ReactNode): React.ReactNode => {
@@ -89,8 +94,20 @@ const routes: IRoute[] = [
     ],
   },
   {
+    path: '/lowCode',
+    component: lazyLoad(<ReactLowCode />),
+    title: '低代码平台',
+    meau: false,
+    icon: 'LaptopOutlined',
+  },
+  {
+    path: '/searchDocs',
+    component: <SearchDocs />,
+    title: '文档检索',
+  },
+  {
     path: '*',
-    component: Page404,
+    component: <Page404 />,
   },
 ]
 

@@ -1,5 +1,6 @@
 const path = require('path')
 const CracoLessPlugin = require('craco-less')
+const { name } = require('./package.json')
 const PROXY_CONFIG_MAP = {
   dev: {
     '/api': {
@@ -30,10 +31,21 @@ module.exports = {
     alias: {
       '@': resove('src'),
     },
+    configure: {
+      output: {
+        // publicPath: publicPath[process.env.NODE_ENV] + '/',
+        library: `${name}-[name]`,
+        libraryTarget: 'umd',
+        chunkLoadingGlobal: `webpackJsonp_${name}`,
+      },
+    },
     plugins: [],
   },
   devServer: {
     proxy: PROXY,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   plugins: [
     {

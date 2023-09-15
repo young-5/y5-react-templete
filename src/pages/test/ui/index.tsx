@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useRef, useEffect, useState } from 'react'
-import { Tabs } from 'antd'
+import { Button, Tabs } from 'antd'
 import cs from './index.module.less'
 import { CustomScroll, Table, VirtualizedList } from '@/components'
 import ImgTs from './ImgTs'
@@ -9,6 +9,7 @@ import cl from 'classnames'
 const { TabPane } = Tabs
 const Test: React.FC = () => {
   const imgBoxRef = useRef<any>([])
+  const [updataData, setUpadtaData] = useState(false)
   useEffect(() => {
     console.log('imgBoxRef', imgBoxRef.current)
   }, [imgBoxRef.current])
@@ -17,7 +18,19 @@ const Test: React.FC = () => {
     name: `-----------------${index}`,
     id: index,
   }))
-
+  const onUpdata = () => {
+    setUpadtaData((v) => !v)
+  }
+  const columns = React.useCallback(() => {
+    return [
+      {
+        title: '角色名称',
+        dataIndex: 'name',
+        key: 'name',
+        render: (text) => <a>{text}</a>,
+      },
+    ]
+  }, [])
   return (
     <div className={cs.test}>
       <div className={cs.test_title}>ui测试</div>
@@ -44,20 +57,13 @@ const Test: React.FC = () => {
           </CustomScroll>
         </TabPane>
         <TabPane tab={'表格'} key={'2'}>
+          <Button onClick={onUpdata}>父组件更新</Button>
           <Table
-            columns={() => {
-              return [
-                {
-                  title: '角色名称',
-                  dataIndex: 'name',
-                  key: 'name',
-                  render: (text) => <a>{text}</a>,
-                },
-              ]
-            }}
+            columns={columns}
             rowKey={(v: any) => v.id}
             searchPrams={{}}
             fetchApi={async () => {
+              console.log('更新了')
               return {
                 data: [
                   {

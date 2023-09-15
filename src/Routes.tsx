@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom'
 import routesConfig from './router'
 import AuthRouter from './router/AuthRouter'
+import Home from '@/pages/home'
+import Docs from '@/pages/docs'
 // import { useStore } from '@/models'
 // import { observer } from 'mobx-react-lite'
 import { Loading } from '@/components'
@@ -22,7 +24,7 @@ const renderRoutes = (routesList: any, menu?: any, props?: any): any => {
           key={route.key || route.path}
           path={route.path}
           element={route.component}>
-          {!!route.children && renderRoutes(route.children)}
+          {!!route.children && renderRoutes(route?.children)}
         </Route>,
       )
     } else {
@@ -32,9 +34,9 @@ const renderRoutes = (routesList: any, menu?: any, props?: any): any => {
           path={route.path}
           element={
             // route.component
-            <AuthRouter route={route.path}>{route.component}</AuthRouter>
+            <AuthRouter route={route.path}>{route?.component}</AuthRouter>
           }>
-          {!!route.children && renderRoutes(route.children)}
+          {!!route.children && renderRoutes(route?.children)}
         </Route>,
       )
     }
@@ -48,22 +50,27 @@ const Routers = (props: any) => {
   const sysConfig = store.sys_config || {}
   const goInitApi = () => {
     if (localStorage.getItem('token') && !user.userId) {
-      user?.query({})
-      sysConfig.querySysFileds()
+      user?.query?.({})
+      sysConfig?.querySysFileds?.()
     }
   }
   React.useEffect(() => {
     goInitApi()
   }, [user])
   return (
-    <Router>
+    <Router
+      basename={
+        (window as any).__POWERED_BY_QIANKUN__ ? '/react-templete' : ''
+      }>
       <React.Suspense fallback={<Loading />}>
         <Routes>
-          <Route path='*' element={<Page404 />} />
-          <Route path='/' element={<Navigate to='/home' />} />
-          {renderRoutes(routesConfig, user?.UserInfo?.menu, props)}
+          <Route path='/' element={<Home />} />
+          <Route path='/docs' element={<Docs />} />
+          {/* <Route path='/home' element={<div>子应用</div>} /> */}
+          {/* {renderRoutes(routesConfig, user?.UserInfo?.menu, props)} */}
+          {/* <Route path='/api/v1/download' element={<div>下载</div>} />
           <Route path='/404' element={<Page404 />} />
-          <Route path='/api/v1/download' element={<div>下载</div>} />
+          <Route path='*' element={<Page404 />} /> */}
         </Routes>
       </React.Suspense>
     </Router>

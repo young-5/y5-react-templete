@@ -1,5 +1,9 @@
 .basic_layout {
   height: 100vh;
+  .layout_header {
+    z-index: 1000;
+    background-color: #fff;
+  }
   header {
     height: 60px;
     display: flex;
@@ -8,12 +12,24 @@
     justify-content: space-between;
     padding: 0 50px;
     border-bottom: 1px solid #8d8888;
+    font-size: 14px;
+    .logo_title {
+      font-family: cursive;
+      font-size: 20px;
+    }
     .menu {
       margin-right: 30px;
     }
     .do_btn {
       display: flex;
       align-items: center;
+      .route {
+        margin-right: 24px;
+        cursor: pointer;
+        &:hover {
+          color: aqua;
+        }
+      }
     }
     .userInfo {
       margin: 0 10px;
@@ -21,6 +37,11 @@
       .loginOut {
         margin-left: 10px;
         color: red;
+        cursor: pointer;
+      }
+      .login {
+        margin-left: 10px;
+        color: rgb(32, 171, 27);
         cursor: pointer;
       }
     }

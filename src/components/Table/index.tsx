@@ -118,4 +118,4 @@ const TableCP: React.FC<ItableProps> = (props) => {
   )
 }
 
-export default TableCP
+export default React.memo(TableCP)
