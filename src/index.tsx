@@ -22,7 +22,7 @@ import './index.css'
 import App from './App'
 import actions from '@/micros/actions'
 import './public-path.js'
-
+console.log(process.env.NODE_ENV);
 let root: any
 function render(props: any) {
   console.log('子应用', props)

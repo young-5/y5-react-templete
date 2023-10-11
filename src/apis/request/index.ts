@@ -36,12 +36,12 @@ fetch.interceptors.response.use(
     cancelToken?.removePendingPool(response.config)
     if (response.status == 200) {
       // 异常处理
-      const { code } = response?.data
-      if (code !== 0) {
-        // 后端沟通状态码
-      } else {
+      const { code } = response.data
+      if ([200, 0].includes(code)) {
         // 数据处理
-        return response
+        return response.data?.data
+      } else {
+        // 后端沟通状态码
       }
     } else {
     }
