@@ -11,4 +11,4 @@ module.exports = {
   arrowParens: "always", // 箭头函数 只有一个参数也需要括号
   trailingComma: "all", // 末尾不使用逗号
   jsxBracketSameLine: true, // jsx 尖括号 换行
-};
+}

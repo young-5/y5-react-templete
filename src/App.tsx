@@ -1,14 +1,14 @@
-import { Suspense, Fragment, createContext, useState } from 'react'
-import { ConfigProvider, Watermark } from 'antd'
 import { themeContext } from '@/context'
-import Routes from './Routes'
-import 'dayjs/locale/zh-cn'
-import dayjs from 'dayjs'
-import zhCN from 'antd/locale/zh_CN'
-import { Provider } from 'react-redux'
 import store from '@/store/index'
+import { ConfigProvider, Watermark } from 'antd'
 import 'antd/dist/reset.css'
+import zhCN from 'antd/locale/zh_CN'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+import { Fragment, Suspense, useState } from 'react'
+import { Provider } from 'react-redux'
 import './App.css'
+import Routes from './Routes'
 dayjs.locale('zh-cn')
 function App() {
   const [theme, setTheme] = useState({

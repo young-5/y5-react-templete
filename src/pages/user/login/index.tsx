@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { Button, Checkbox, Form, Input } from 'antd'
-import { useNavigate } from 'react-router-dom'
 import fetch from '@/apis/request'
-import { changeUserInfo } from '@/store/module/user'
-import { useDispatch, useSelector } from 'react-redux'
 import actions from '@/micros/actions'
+import { changeUserInfo } from '@/store/module/user'
+import { Button, Checkbox, Form, Input } from 'antd'
+import * as React from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import cs from './index.module.less'
 const Home: React.FC = () => {
   const navigate = useNavigate()
@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       .then((res) => {
         dispatch(
           changeUserInfo({
-            name: '杨文武',
+            name: '小五1',
             id: '4567345',
           }),
         )
@@ -57,29 +57,25 @@ const Home: React.FC = () => {
           <Form.Item
             label='用户名'
             name='username'
-            rules={[
-              { required: true, message: 'Please input your username!' },
-            ]}>
+            rules={[{ required: true, message: '请输入用户名!' }]}>
             <Input />
           </Form.Item>
 
           <Form.Item
             label='密码'
             name='password'
-            rules={[
-              { required: true, message: 'Please input your password!' },
-            ]}>
+            rules={[{ required: true, message: '请输入密码!' }]}>
             <Input.Password />
           </Form.Item>
 
           <Form.Item
             name='remember'
             valuePropName='checked'
-            wrapperCol={{ offset: 8, span: 16 }}>
+            wrapperCol={{ offset: 0, span: 16 }}>
             <Checkbox>记住密码</Checkbox>
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item wrapperCol={{ offset: 20, span: 0 }}>
             <Button type='primary' htmlType='submit'>
               登录
             </Button>

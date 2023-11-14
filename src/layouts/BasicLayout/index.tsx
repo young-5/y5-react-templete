@@ -1,24 +1,15 @@
-import * as React from 'react'
-import { useState, useContext, useEffect, useRef } from 'react'
 import { themeContext } from '@/context'
-import { Outlet } from 'react-router-dom'
+import { changeUserInfo } from '@/store/module/user'
 import { DownOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
-import {
-  Dropdown,
-  Space,
-  AutoComplete,
-  theme as Theme,
-  Affix,
-  Watermark,
-} from 'antd'
-import { useNavigate } from 'react-router-dom'
-import cs from './index.module.less'
+import { Affix, AutoComplete, Dropdown, Space, theme as Theme } from 'antd'
+import * as React from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeUserInfo } from '@/store/module/user'
+import { Outlet, useNavigate } from 'react-router-dom'
+import cs from './index.module.less'
 // import actions from '@/micros/actions'
 import { CustomScroll } from '@/components'
-import SearchInput from './SearchInput'
 const items: MenuProps['items'] = [
   {
     key: '/home',
@@ -35,10 +26,6 @@ const items: MenuProps['items'] = [
       {
         key: '/test/ui',
         label: 'UI测试',
-      },
-      {
-        key: '/lowCode',
-        label: '低代码平台',
       },
     ],
   },
@@ -120,24 +107,7 @@ const BasicLayout: React.FC = () => {
               }}>
               Young5百宝箱
             </div>
-            <div>
-              <SearchInput />
-            </div>
             <div className={cs.do_btn}>
-              <div
-                className={cs.route}
-                onClick={() => {
-                  navigate('/lowCode')
-                }}>
-                低代码平台
-              </div>
-              <div
-                className={cs.route}
-                onClick={() => {
-                  navigate('/searchDocs')
-                }}>
-                文档检索库
-              </div>
               <Dropdown
                 menu={{ items, onClick, forceSubMenuRender: true }}
                 // trigger={['click']}

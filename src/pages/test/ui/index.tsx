@@ -1,11 +1,10 @@
+import { CustomScroll, VirtualizedList } from '@/components'
+import { Tabs } from 'antd'
 import * as React from 'react'
-import { useRef, useEffect, useState } from 'react'
-import { Button, Tabs } from 'antd'
-import cs from './index.module.less'
-import { CustomScroll, Table, VirtualizedList } from '@/components'
-import ImgTs from './ImgTs'
+import { useEffect, useRef, useState } from 'react'
 import CssCP from './CssCP'
-import cl from 'classnames'
+import ImgTs from './ImgTs'
+import cs from './index.module.less'
 const { TabPane } = Tabs
 const Test: React.FC = () => {
   const imgBoxRef = useRef<any>([])
@@ -55,30 +54,6 @@ const Test: React.FC = () => {
               <div>底部</div>
             </div>
           </CustomScroll>
-        </TabPane>
-        <TabPane tab={'表格'} key={'2'}>
-          <Button onClick={onUpdata}>父组件更新</Button>
-          <Table
-            columns={columns}
-            rowKey={(v: any) => v.id}
-            searchPrams={{}}
-            fetchApi={async () => {
-              console.log('更新了')
-              return {
-                data: [
-                  {
-                    id: '111',
-                    name: '1',
-                  },
-                  {
-                    id: '2111',
-                    name: '2',
-                  },
-                ],
-                total: 2,
-              }
-            }}
-          />
         </TabPane>
 
         <TabPane tab={'虚拟列表'} key={'5'}>

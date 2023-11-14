@@ -1,8 +1,0 @@
-export { default as FormInput } from '../FormItemBase/FormInput'
-export { default as FormSelect } from '../FormItemBase/FormSelect'
-export { default as FormColor } from '../FormItemBase/FormColor'
-export { default as FormCheckTag } from '../FormItemBase/FormCheckTag'
-export { default as FormAddTag } from '../FormItemBase/FormAddTag'
-export { default as FormAutoComplete } from '../FormItemBase/FormAutoComplete'
-export { default as FormCheckbox } from '../FormItemBase/FormCheckbox'
-export { default as FormRadio } from '../FormItemBase/FormRadio'

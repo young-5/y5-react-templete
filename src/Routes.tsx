@@ -1,18 +1,12 @@
 import * as React from 'react'
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-  Navigate,
-} from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import routesConfig from './router'
 import AuthRouter from './router/AuthRouter'
-import Home from '@/pages/home'
-import Docs from '@/pages/docs'
+// import Home from '@/pages/home'
+// import Docs from '@/pages/docs'
 // import { useStore } from '@/models'
 // import { observer } from 'mobx-react-lite'
-import { Loading } from '@/components'
-const Page404 = React.lazy(() => import('./pages/404'))
+// const Page404 = React.lazy(() => import('./pages/404'))
 //react-router-dom 版本不同 配置属性有差异
 const renderRoutes = (routesList: any, menu?: any, props?: any): any => {
   let _routesList: any[] = []
@@ -62,12 +56,12 @@ const Routers = (props: any) => {
       basename={
         (window as any).__POWERED_BY_QIANKUN__ ? '/react-templete' : ''
       }>
-      <React.Suspense fallback={<Loading />}>
+      <React.Suspense fallback={<div>加载中。。。</div>}>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/docs' element={<Docs />} />
+          {/* <Route path='/' element={<Home />} />
+          <Route path='/docs' element={<Docs />} /> */}
           {/* <Route path='/home' element={<div>子应用</div>} /> */}
-          {/* {renderRoutes(routesConfig, user?.UserInfo?.menu, props)} */}
+          {renderRoutes(routesConfig, user?.UserInfo?.menu, props)}
           {/* <Route path='/api/v1/download' element={<div>下载</div>} />
           <Route path='/404' element={<Page404 />} />
           <Route path='*' element={<Page404 />} /> */}
