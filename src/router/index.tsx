@@ -39,7 +39,7 @@ const routes: IRoute[] = [
     path: '/login',
     title: '登录',
     component: <UserLayout />,
-    meau: false,
+    menu: false,
     children: [
       {
         path: '/login',
@@ -52,32 +52,33 @@ const routes: IRoute[] = [
     path: '/',
     component: <BasicLayout />,
     redirect: '/home',
-    meau: true,
+    menu: true,
     children: [
       {
         path: '/home',
         component: lazyLoad(<Home />),
         title: '首页',
-        meau: true,
+        menu: true,
         icon: 'LaptopOutlined',
       },
       {
         path: '/test',
         component: <Outletc />,
         title: '测试',
-        meau: true,
+        menu: true,
         icon: 'UserOutlined',
+        redirect: '/test/test',
         children: [
           {
-            path: '/test',
+            path: '/test/test',
             title: '逻辑测试',
-            meau: true,
+            menu: true,
             component: lazyLoad(<ReactTest />),
           },
           {
             path: '/test/ui',
             title: 'UI测试',
-            meau: true,
+            menu: true,
             component: lazyLoad(<ReactUiTest />),
           },
         ],

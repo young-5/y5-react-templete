@@ -8,10 +8,13 @@
 1. craco 进行项目配置 (creact-reaact-app 可使用 eject 进行 webpack 配置的暴露)
 1. eslint prettier 代码校验
 1. stylelint 样式校验
-1. husky lint-staged git commit 校验
-1. 基于 antd 进行 ui 开发
-1. 基于 axios 进行网络请求
-1. 基于 redux 进行状态管理
+1. husky + lint-staged + commitlint 进行 git commit 校验
+1. ui 库： antd
+1. 网络请求： axios
+1. 状态管理: react-redux + @reduxjs/toolkit
+1. hooks 工具库 ：ahooks
+1. 日期工具 ：dayjs
+1. js 函数工具 ：lodash
 
 ## 项目结构规范
 
@@ -68,19 +71,9 @@
 
    src\apis\request\index.ts
 
-2. 上传封装 （源文件上传 与 分片上穿）
-
 ### 基础组件封装
 
-1. 功能组件
-
-   - 权限组件
-
-2. ui 组件
-
-   - 滚动条组件
-
-## 项目规范与建议
+## 项目功能开发方案
 
 1. 路由
 
@@ -99,26 +92,36 @@
 
 2. 全局状态
 
-   - mobx @observale
+- mobx + context
 
-     1. mobx 可以定义多个 store
-     2. 统一管理 store,calss 统一初始化，存储在 context 中
-     3. Provider 全局注入
-     4. 组件 useStore 使用
-     5. 更改 mobx action
-     6. 异步流程
+  - mobx @observale
 
-   - react.createContext Provider / Consumer 全局注入
-   - mobx-react-lite(mobx-reaxct 的轻量化，支持 hooks 的支持)，组件监听
+    1.  mobx 可以定义多个 store
+    2.  统一管理 store,calss 统一初始化，存储在 context 中
+    3.  Provider 全局注入
+    4.  组件 useStore 使用
+    5.  更改 mobx action
+    6.  异步流程
 
-   1. 创建 store, --> models。创建 class 包含@observable @action @computed 等
-   2. 统一管理 store,calss 统一初始化，存储在 context 中 。Provider 全局注入
-   3. 组件使用 useStore
-   4. 组件监听：import { observer } from "mobx-react-lite"; observer(Menus)
+  - react.createContext Provider / Consumer 全局注入
+  - mobx-react-lite(mobx-reaxct 的轻量化，支持 hooks 的支持)，组件监听
 
-注意：何时使用 mobx?
+  1.  创建 store, --> models。创建 class 包含@observable @action @computed 等
+  2.  统一管理 store,calss 统一初始化，存储在 context 中 。Provider 全局注入
+  3.  组件使用 useStore
+  4.  组件监听：import { observer } from "mobx-react-lite"; observer(Menus)
 
-4. 国际化
+  注意：何时使用 mobx?
+
+- react-redux + @reduxjs/toolkit
+
+  1.  定义：createSlice
+  2.  导出：configureStore
+  3.  全局注入：Provider
+  4.  使用 state：useSelector
+  5.  触发 actions：useDispatch
+
+3. 国际化
 
 - i18n
 
