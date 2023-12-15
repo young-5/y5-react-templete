@@ -1,4 +1,4 @@
-import { themeContext } from '@/context'
+import { themeContext } from '@/providers'
 import store from '@/store/index'
 import { ConfigProvider, Watermark } from 'antd'
 import 'antd/dist/reset.css'
@@ -7,7 +7,6 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import { Fragment, Suspense, useState } from 'react'
 import { Provider } from 'react-redux'
-import './App.css'
 import Routes from './Routes'
 dayjs.locale('zh-cn')
 function App() {

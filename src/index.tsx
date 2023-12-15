@@ -16,12 +16,11 @@
 // // to log results (for example: reportWebVitals(console.log))
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals()
-import * as React from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App'
 import actions from '@/micros/actions'
+import { createRoot } from 'react-dom/client'
+import App from './App'
 import './public-path.js'
+import './styles/index.less'
 
 let root: any
 function render(props: any) {

@@ -1,4 +1,4 @@
-import fetch from '@/apis/request'
+import { loginApi } from '@/apis/login'
 import actions from '@/micros/actions'
 import { changeUserInfo } from '@/store/module/user'
 import { Button, Checkbox, Form, Input } from 'antd'
@@ -16,24 +16,19 @@ const Home: React.FC = () => {
         name: '小五',
       },
     })
-    fetch
-      .fetch({
-        url: '/api/v1/users/login',
-        method: 'post',
-        params: {
-          userId: values.password,
-          name: values.username,
-        },
-      })
-      .then((res) => {
-        dispatch(
-          changeUserInfo({
-            name: '小五1',
-            id: '4567345',
-          }),
-        )
-        goConter()
-      })
+    loginApi({
+      userId: values.password,
+      name: values.username,
+    }).then((res) => {
+      console.log(res)
+      dispatch(
+        changeUserInfo({
+          name: '小五1',
+          id: '4567345',
+        }),
+      )
+      goConter()
+    })
   }
 
   const onFinishFailed = (errorInfo: any) => {

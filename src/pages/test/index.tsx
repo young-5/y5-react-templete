@@ -1,24 +1,17 @@
-import * as React from 'react'
+import { cancelToken } from '@/apis/request/fetch'
+import { testApi } from '@/apis/test'
 import { Button, Tabs } from 'antd'
-import fetch from '@/apis/request'
+import * as React from 'react'
 import cs from './index.module.less'
 const { TabPane } = Tabs
 const Test: React.FC = () => {
   const getData = () => {
-    fetch
-      .fetch({
-        url: '/api/v1/access',
-        method: 'get',
-        params: {
-          addPendingPool: {},
-        },
-      })
-      .then((res) => {
-        console.log(res)
-      })
+    testApi().then((res) => {
+      console.log(res)
+    })
   }
   const cancelFetch = () => {
-    fetch.cancelToken.removePendingPool({}, 'get$$/api/v1/string')
+    cancelToken.removePendingPool({}, '/api/v1/access')
   }
   return (
     <div className={cs.test}>

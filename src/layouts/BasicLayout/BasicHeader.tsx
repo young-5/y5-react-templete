@@ -1,4 +1,4 @@
-import { themeContext } from '@/context'
+import { themeContext } from '@/providers'
 import { changeUserInfo } from '@/store/module/user'
 import { DownOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'

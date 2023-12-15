@@ -1,6 +1,6 @@
 import BreadCrumb from '@/components/BreadCrumb'
 import Menu from '@/components/Menu'
-import routes from '@/router/index'
+import routes from '@/routes/index'
 import { Layout } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
