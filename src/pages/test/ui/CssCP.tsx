@@ -1,8 +1,6 @@
 import * as React from 'react'
 import cs from './cssCP.module.less'
 
-import cl from 'classnames'
-
 const ImgTs: React.FC = () => {
   return (
     <div className={cs.css_test}>
@@ -19,7 +17,7 @@ const ImgTs: React.FC = () => {
         <div className={cs.title_desc}>
           margin、padding不管垂直还是水平方向都相对比父元素的宽度、border-radius则是相对于元素自身
         </div>
-        <div className={cs.title_desc}>知识点：1. 浮动 2.</div>
+        <div className={cs.title_desc}>知识点：1. 浮动 </div>
       </div>
       <div className={cs.test1}>
         <div className={cs.test1_l}>1</div>
@@ -74,6 +72,12 @@ const ImgTs: React.FC = () => {
         <div className={cs.question_title}>13. link 与 @import 的区别</div>
       </div>
       <div className={cs.space} />
+
+      <div>重叠</div>
+      <div className={cs.cd_box}>
+        <div className={cs.cd1}></div>
+        <div className={cs.cd2}></div>
+      </div>
     </div>
   )
 }

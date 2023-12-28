@@ -5,7 +5,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate()
   return (
     <div className={cs.home_root}>
-      <div className={cs.home_route}>首页</div>
+      <div className={cs.home_container}>Hello world !</div>
     </div>
   )
 }

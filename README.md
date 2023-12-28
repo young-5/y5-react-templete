@@ -51,6 +51,7 @@ npm run build
     Routes.tsx              // 路由组件
     __tests__               // 单元测试
     craco.config.js         // 构建配置文件
+    jest.config.js          // jest单元测试配置
     mock                    // mock数据
     config                  // 存放 ts 及 craco 相关配置
     public                  // 静态文件 html favicon static文件,其中react等静态资源可以内置在static中
@@ -64,6 +65,7 @@ npm run build
 
 1. package 项目依赖，项目命令，代码质量 格式化 等配置
 2. craco.config webpack 构建打包配置
+2. jest.config jest 单元测试
 3. tsconfig typescript 配置
 4. .eslintrc 代码质量校验配置
 5. stylelint.config 样式质量校验配置
@@ -81,6 +83,7 @@ npm run build
 5. dayjs
 6. axios
 7. typescript
+8. jest
 
 ## 项目规范
 

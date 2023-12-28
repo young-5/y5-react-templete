@@ -49,18 +49,18 @@ module.exports = {
         // 变量替换
         // new webpack.DefinePlugin({"xxx":"xxx"})
         // 压缩
-        ...whenProd(() => {
-          return [
-            new CompressionPlugin({
-              test: /\.(js|css|png|svg|jpg|jpeg|webp|woff2?|ttf|eot)$/,
-            }),
-            // process.env.ANALAYZE === 'true' &&
-            //   new BundleAnalyzerPlugin({
-            //     analyzerMode: 'static',
-            //     openAnalyzer: flase,
-            //   }).filters(Boolean),
-          ]
-        }),
+        // ...whenProd(() => {
+        //   return [
+        //     new CompressionPlugin({
+        //       test: /\.(js|css|png|svg|jpg|jpeg|webp|woff2?|ttf|eot)$/,
+        //     }),
+        //     // process.env.ANALAYZE === 'true' &&
+        //     //   new BundleAnalyzerPlugin({
+        //     //     analyzerMode: 'static',
+        //     //     openAnalyzer: flase,
+        //     //   }).filters(Boolean),
+        //   ]
+        // }),
       ],
     },
   },
@@ -105,15 +105,15 @@ module.exports = {
         },
       },
     },
-    ...whenProd(() => [
-      //公共资源不打包
-      {
-        plugin: cracoExternals,
-        options: {
-          react: 'React',
-        },
-      },
-    ]),
+    // ...whenProd(() => [
+    //   //公共资源不打包
+    //   {
+    //     plugin: cracoExternals,
+    //     options: {
+    //       react: 'React',
+    //     },
+    //   },
+    // ]),
     // 输出 html
     // ...
     // `Ant Design`相关配置

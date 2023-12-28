@@ -15,6 +15,7 @@
 1. hooks 工具库 ：ahooks
 1. 日期工具 ：dayjs
 1. js 函数工具 ：lodash
+1. jest 单元测试
 
 ## 项目结构规范
 
@@ -36,6 +37,7 @@
         Routes              // 路由组件
 
     craco.config.js         // 构建配置文件
+    jest.config.js          // jest 测试配置
 
 ## 项目基础建设
 

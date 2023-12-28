@@ -5,3 +5,7 @@ export function testApi() {
     addPendingPool: { hashUrl: '/api/v1/access' },
   })
 }
+
+export function testrrorApi() {
+  return service.get('/api/v1/access1')
+}
