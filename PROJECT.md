@@ -120,7 +120,7 @@
   1.  定义：createSlice
   2.  导出：configureStore
   3.  全局注入：Provider
-  4.  使用 state：useSelector
+  4.  使用 state：useSelector，替代connect,关联组件，触发render
   5.  触发 actions：useDispatch
 
 3. 国际化

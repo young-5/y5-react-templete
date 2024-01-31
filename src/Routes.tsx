@@ -51,6 +51,7 @@ const Routers = (props: any) => {
   React.useEffect(() => {
     goInitApi()
   }, [user])
+  console.log('更新主题了')
   return (
     <Router
       basename={

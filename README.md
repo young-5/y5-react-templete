@@ -14,7 +14,8 @@ npm run start:dev (开发环境)
 ## 单元测试
 
 ```
-npm run tet
+npm run test
+npm run coverage
 ```
 
 ## 编译
@@ -47,7 +48,8 @@ npm run build
         routes/             // 路由配置
         layouts/            // 布局组件
         styles/             // 公共样式
-        providers           // 公共 provider
+        providers?          // 公共 provider
+        store/              // 全局store
     Routes.tsx              // 路由组件
     __tests__               // 单元测试
     craco.config.js         // 构建配置文件
@@ -58,6 +60,7 @@ npm run build
 
 ```
     静态支援 html 引入
+
     <script src="%PUBLIC_URL%static/js/react.procuction.min.js"></script>
 ```
 
@@ -65,14 +68,14 @@ npm run build
 
 1. package 项目依赖，项目命令，代码质量 格式化 等配置
 2. craco.config webpack 构建打包配置
-2. jest.config jest 单元测试
-3. tsconfig typescript 配置
-4. .eslintrc 代码质量校验配置
-5. stylelint.config 样式质量校验配置
-6. .prettierrc 代码格式化
-7. commitlint.config git commit 校验
-8. .husky git 钩子配置
-9. .[xxx]ignore 相关忽略文件
+3. jest.config jest 单元测试
+4. tsconfig typescript 配置
+5. .eslintrc 代码质量校验配置
+6. stylelint.config 样式质量校验配置
+7. .prettierrc 代码格式化
+8. commitlint.config git commit 校验
+9. .husky git 钩子配置
+10. .[xxx]ignore 相关忽略文件
 
 ## 开发生态
 
@@ -97,12 +100,10 @@ npm run build
 
 1. axios 请求封装
 2. 异常捕获
-3.
 
 ## 内置组件
 
 1. ErrorBoundary 异常捕获组件
-2.
 
 ## 功能指引
 
@@ -188,6 +189,8 @@ return {
   }
 }
 ```
+
+如需自己建设 BFF 或 node 相关服务：可通过 taoists-cli init 选择 y5-koa-templete 模板进行 搭建
 
 ## 生态建议
 
