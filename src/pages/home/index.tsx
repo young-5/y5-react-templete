@@ -1,8 +1,8 @@
-import * as React from 'react'
-import cs from './index.module.less'
-import { useNavigate } from 'react-router-dom'
 import data from '@/datas/data'
-import { Tag, Progress } from 'antd'
+import { Progress, Tag } from 'antd'
+import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
+import cs from './index.module.less'
 const Home: React.FC = () => {
   const navigate = useNavigate()
   const goConter = (index: number) => {
@@ -11,7 +11,6 @@ const Home: React.FC = () => {
       replace: true,
     })
   }
-  debugger
   return (
     <div className={cs.home_root}>
       <div className={cs.home_route}>

@@ -3,6 +3,12 @@ const CracoLessPlugin = require('craco-less')
 const { name } = require('./package.json')
 const PROXY_CONFIG_MAP = {
   dev: {
+    '/koaurl': {
+      //当有 /api开头的地址是，代理到target地址
+      target: 'http://127.0.0.1:5050/api/v1/', // 需要跨域代理的本地路径
+      changeOrigin: true, //是否改变请求源头
+      pathRewrite: (path) => path.replace(/^\/koaurl/, ''), // 路径重写
+    },
     '/api': {
       target: 'http://localhost:3000',
       changeOrigin: true,

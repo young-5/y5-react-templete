@@ -1,22 +1,22 @@
-import * as React from 'react'
-import { useState, useContext, useEffect, useRef } from 'react'
 import { themeContext } from '@/context'
-import { Outlet } from 'react-router-dom'
-import { DownOutlined } from '@ant-design/icons'
-import type { MenuProps } from 'antd'
-import {
-  Dropdown,
-  Space,
-  AutoComplete,
-  theme as Theme,
-  Affix,
-  Watermark,
-} from 'antd'
-import { useNavigate } from 'react-router-dom'
-import cs from './index.module.less'
-import { useDispatch, useSelector } from 'react-redux'
 import { changeUserInfo } from '@/store/module/user'
+import { DownOutlined } from '@ant-design/icons'
+import {
+  Affix,
+  AutoComplete,
+  Dropdown,
+  MenuProps,
+  message,
+  Space,
+  theme as Theme
+} from 'antd'
+import * as React from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Outlet, useNavigate } from 'react-router-dom'
+import cs from './index.module.less'
 // import actions from '@/micros/actions'
+import { loginOut } from '@/apis/user'
 import { CustomScroll } from '@/components'
 import SearchInput from './SearchInput'
 const items: MenuProps['items'] = [
@@ -66,7 +66,6 @@ const BasicLayout: React.FC = () => {
   const dispatch = useDispatch()
 
   const userInfo: any = useSelector((state: any) => {
-    // console.log(state)
     return {
       ...state.user.userInfo,
     }
@@ -75,7 +74,7 @@ const BasicLayout: React.FC = () => {
   //   console.log('子应用监听到', state)
   // })
   useEffect(() => {
-    // console.log('userInfo', userInfo)
+    console.log('userInfo', userInfo)
   }, [userInfo])
   const navigate = useNavigate()
   const [value, setValue] = useState('')
@@ -101,14 +100,18 @@ const BasicLayout: React.FC = () => {
   }
   const goOut = () => {
     dispatch(changeUserInfo({}))
-    navigate('/login')
+    loginOut({}).then((res) => {
+      message.success('退出成功')
+      ;(window as any).qiankunProps.setGlobalState({ msg: 'out' })
+
+      // 通知父应用退出系统
+    })
   }
   const DomRef = useRef()
   const getPanelValue = (searchText: string) =>
     !searchText ? THEME_TYPE : THEME_TYPE
   // : THEME_TYPE?.filter((v) => v.value.includes(searchText))
   return (
-    // <Watermark content='Young5百宝箱'>
     <CustomScroll id='baseCustomScroll'>
       <div className={cs.basic_layout} id='cp'>
         <Affix offsetTop={2}>
@@ -118,7 +121,7 @@ const BasicLayout: React.FC = () => {
               onClick={() => {
                 navigate('/home')
               }}>
-              Young5百宝箱
+              Taoists百宝箱
             </div>
             <div>
               <SearchInput />
@@ -169,7 +172,7 @@ const BasicLayout: React.FC = () => {
               <div className={cs.userInfo}>
                 {userInfo?.id ? (
                   <>
-                    <div>{userInfo?.name}</div>
+                    <div>{userInfo?.userName}</div>
                     <div className={cs.loginOut} onClick={goOut}>
                       退出
                     </div>
@@ -192,7 +195,6 @@ const BasicLayout: React.FC = () => {
         </div>
       </div>
     </CustomScroll>
-    // </Watermark>
   )
 }
 

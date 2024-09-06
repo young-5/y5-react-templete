@@ -1,6 +1,6 @@
 // 路由注册配置
-import * as React from 'react'
 import { Loading } from '@/components'
+import * as React from 'react'
 
 interface IRoute {
   path: string

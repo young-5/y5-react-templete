@@ -16,11 +16,10 @@
 // // to log results (for example: reportWebVitals(console.log))
 // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals()
-import * as React from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App'
 import actions from '@/micros/actions'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import './index.css'
 import './public-path.js'
 
 let root: any
@@ -32,7 +31,7 @@ function render(props: any) {
     ? container.querySelector('#root')
     : document.getElementById('root')
   root = createRoot(dom)
-  root.render(<App />)
+  root.render(<App micro={props} />)
 }
 const _patch = (window as any).__POWERED_BY_QIANKUN__ ? '/public' : ''
 
@@ -50,13 +49,17 @@ export async function bootstrap() {
 // 应用每次进入都会调用 mount 方法，通常我们在这里触发应用的渲染方法
 export async function mount(props: any) {
   console.log('进入子系统：', props)
+  ;(window as any).qiankunProps = props
+  // 挂载
   actions.setActions(props)
+  // 监听
   props.onGlobalStateChange((state, prev) => {
     // state: 变更后的状态; prev 变更前的状态
     console.log(state, prev)
     // 将这个state存储到我们子应用store
   })
-  props.setGlobalState({ msg: 'in' })
+  // 触发
+  // props.setGlobalState({ msg: 'in' })
   render(props)
 }
 

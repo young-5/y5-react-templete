@@ -25,7 +25,6 @@ const Docs: FC = () => {
     setAnchorItmes(data)
   }, [id])
   const [anchorItems, setAnchorItmes] = useState([])
-  debugger
   return (
     <div className={cs.docs_root}>
       <div className={cs.docs_title}>

@@ -1,17 +1,15 @@
+import Docs from '@/pages/docs'
+import Home from '@/pages/home'
 import * as React from 'react'
-import {
-  Routes,
-  Route,
-  BrowserRouter as Router,
-  Navigate,
-} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import routesConfig from './router'
 import AuthRouter from './router/AuthRouter'
-import Home from '@/pages/home'
-import Docs from '@/pages/docs'
 // import { useStore } from '@/models'
 // import { observer } from 'mobx-react-lite'
 import { Loading } from '@/components'
+import { changeUserInfo } from '@/store/module/user'
+import { queryUserInfo } from './apis/user'
 const Page404 = React.lazy(() => import('./pages/404'))
 //react-router-dom 版本不同 配置属性有差异
 const renderRoutes = (routesList: any, menu?: any, props?: any): any => {
@@ -48,8 +46,13 @@ const Routers = (props: any) => {
   let store: any = {} // useStore()
   const user = store.user || {}
   const sysConfig = store.sys_config || {}
+  const dispatch = useDispatch()
   const goInitApi = () => {
-    if (localStorage.getItem('token') && !user.userId) {
+    if (localStorage.getItem('token') && !user.id) {
+      // 获取用户信息 并存储
+      queryUserInfo({}).then((res: any) => {
+        dispatch(changeUserInfo(res.userinfo))
+      })
       user?.query?.({})
       sysConfig?.querySysFileds?.()
     }
@@ -67,10 +70,10 @@ const Routers = (props: any) => {
           <Route path='/' element={<Home />} />
           <Route path='/docs' element={<Docs />} />
           {/* <Route path='/home' element={<div>子应用</div>} /> */}
-          {/* {renderRoutes(routesConfig, user?.UserInfo?.menu, props)} */}
-          {/* <Route path='/api/v1/download' element={<div>下载</div>} />
+          {renderRoutes(routesConfig, user?.UserInfo?.menu, props)}
+          <Route path='/api/v1/download' element={<div>下载</div>} />
           <Route path='/404' element={<Page404 />} />
-          <Route path='*' element={<Page404 />} /> */}
+          <Route path='*' element={<Page404 />} />
         </Routes>
       </React.Suspense>
     </Router>

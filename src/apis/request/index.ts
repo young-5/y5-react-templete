@@ -1,6 +1,7 @@
+import { message } from 'antd'
 import axios from 'axios'
-import { verifyAuthority, isLogin } from './tools'
 import CancelToken from './CancelToken'
+import { isLogin, verifyAuthority } from './tools'
 const cancelToken: any = new CancelToken()
 const BASE_URL = ''
 const fetch = axios.create({
@@ -13,6 +14,10 @@ fetch.interceptors.request.use(
     // 数据处理
     verifyAuthority()
     isLogin()
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers['Authorization'] = 'Bearer ' + token
+    }
     if (config?.params?.addPendingPool) {
       console.log(cancelToken)
       let hashUrl = cancelToken?.addPendingPool(
@@ -36,12 +41,13 @@ fetch.interceptors.response.use(
     cancelToken?.removePendingPool(response.config)
     if (response.status == 200) {
       // 异常处理
-      const { code } = response?.data
-      if (code !== 0) {
-        // 后端沟通状态码
-      } else {
+      const { code, data, msg } = response?.data || {}
+      if ([0, 200].includes(code)) {
         // 数据处理
-        return response
+        return data
+      } else {
+        // 后端沟通状态码
+        message.error(msg)
       }
     } else {
     }
